@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+          bean标签：用于配置让spring创建对象，并且存入ioc容器之中
+             id属性：对象的唯一标识。
+             class属性：指定要创建对象的全限定类名
+      -->
+
+
+    <!--构造函数注入name方式调用有参构造,有了有参构造就不能用set方式注入了，只有没有有参构造且有set方法时才能用到set注入的方式-->
+    <bean id="date" class="java.util.Date"></bean>
+    <!--<bean id="accountService" class="com.lovejava.service.impl.AccountServiceImpl">-->
+        <!--<constructor-arg name="age" value="22"></constructor-arg>-->
+        <!--<constructor-arg name="name" value="张三"></constructor-arg>-->
+        <!--<constructor-arg name="birthday" redf="date"></constructor-arg>-->
+    <!--</bean>-->
+
+
+    <!--set注入-->
+    <bean id="accountService" class="com.lovejava.service.impl.AccountServiceImpl">
+       <property name="name" value="张三"></property>
+       <property name="age" value="20"></property>
+       <property name="birthday" ref="date"></property>
+    </bean>
+
+
+
+</beans>
